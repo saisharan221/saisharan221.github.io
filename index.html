@@ -1,84 +1,259 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saisharan Raja | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <meta charset="UTF-8" />
+  <meta name="description" content="Portfolio of Saisharan Raja - Computer Science Student, Developer, and ML & AI Enthusiast." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saisharan Raja | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="data:," />
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 relative">
 
-    <section id="home">
-        <h1 data-aos="fade-up">Welcome to My Portfolio</h1>
-        <p data-aos="fade-right">I'm Saisharan Raja, a passionate Computer Science student specializing in AI, cybersecurity, and software development.</p>
-    </section>
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <div class="spinner"></div>
+  </div>
 
-    <section id="about">
-        <h2 data-aos="zoom-in">About Me</h2>
-        <p data-aos="fade-up">Currently pursuing a BSc in Computer Science at Linnaeus University, I am driven by curiosity for technology and a commitment to innovation.</p>
-    </section>
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="font-bold text-lg font-heading">Saisharan Raja</div>
+      <div class="hidden md:flex space-x-6 font-medium">
+        <a href="#home" class="nav-link hover:text-blue-500 transition">Home</a>
+        <a href="#about" class="nav-link hover:text-blue-500 transition">About</a>
+        <a href="#experience" class="nav-link hover:text-blue-500 transition">Experience</a>
+        <a href="#projects" class="nav-link hover:text-blue-500 transition">Projects</a>
+        <a href="#skills" class="nav-link hover:text-blue-500 transition">Skills</a>
+        <a href="#contact" class="nav-link hover:text-blue-500 transition">Contact</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="darkModeToggle" class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Toggle Dark Mode">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path id="theme-icon-path" stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v1m0 16v1m8.66-4.66-.7.7M4.34 7.34l.7.7m12.02 8.52l-.7.7M5.04 18.96l.7-.7M21 12h-1M4 12H3m16.07 4.07-.7-.7M7.63 7.63l-.7-.7" />
+          </svg>
+        </button>
+        <button class="md:hidden p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" id="menuBtn" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden flex-col bg-white dark:bg-gray-800 p-4 space-y-2 transition">
+      <a href="#home" class="nav-link block hover:text-blue-500">Home</a>
+      <a href="#about" class="nav-link block hover:text-blue-500">About</a>
+      <a href="#experience" class="nav-link block hover:text-blue-500">Experience</a>
+      <a href="#projects" class="nav-link block hover:text-blue-500">Projects</a>
+      <a href="#skills" class="nav-link block hover:text-blue-500">Skills</a>
+      <a href="#contact" class="nav-link block hover:text-blue-500">Contact</a>
+    </div>
+  </nav>
 
-    <section id="experience">
-        <h2 data-aos="fade-right">Experience</h2>
-        <ul>
-            <li data-aos="fade-up">
-                <h3>Developer Intern | Visard</h3>
-                <p>Jul. 2022 - Feb. 2023 | Bangalore, India</p>
-                <p>Collaborated with a team to design and develop scalable software solutions for emerging businesses.</p>
-            </li>
-            <li data-aos="fade-up">
-                <h3>Machine Learning Developer | Fashonme</h3>
-                <p>Dec. 2022 - Jul. 2023 | Stockholm, Sweden</p>
-                <p>Developed AI-driven algorithms to enhance user experience and optimize operations.</p>
-            </li>
-        </ul>
-    </section>
+  <!-- Hero Section -->
+  <header id="home" class="hero-bg h-screen flex flex-col justify-center items-center text-white relative">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 font-heading" data-aos="fade-down">Saisharan Raja</h1>
+    <p class="text-xl md:text-2xl mb-6" data-aos="fade-up" data-aos-delay="200">
+      Computer Science Student | ML & AI Enthusiast | Web Developer
+    </p>
+    <a href="#contact" class="bg-white text-blue-600 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition transform hover:scale-105"
+      data-aos="zoom-in" data-aos-delay="400">
+      Get in Touch
+    </a>
+    <!-- SVG Wave -->
+    <svg class="wave" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1"
+      d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,122.7C672,139,768,213,864,256C960,299,1056,309,1152,282.7C1248,256,1344,192,1392,160L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+    </path></svg>
+  </header>
 
-    <section id="projects">
-        <h2 data-aos="zoom-in">Projects</h2>
-        <ul>
-            <li data-aos="fade-up">
-                <h3>AI for Maritime Systems</h3>
-                <p>Developed AI solutions to improve energy and fuel efficiency in maritime operations.</p>
-            </li>
-        </ul>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold mb-8 font-heading" data-aos="fade-right">About Me</h2>
+    <div class="md:flex items-center space-x-8">
+      <img src="path_to_your_photo.jpg" alt="Your Photo" class="w-48 h-48 rounded-full mb-6 md:mb-0 object-cover" data-aos="fade-up" />
+      <div data-aos="fade-left">
+        <p class="mb-4">I am currently pursuing a BSc in Computer Science at Linnaeus University, Växjö, Sweden (2023–2026). I previously completed my International Baccalaureate at the International School of Stockholm Region (2017–2023).</p>
+        <p class="mb-4">I’m passionate about machine learning, natural language processing, data science, and applying AI to solve real-world problems in various industries, including maritime transportation.</p>
+        <p class="mb-4">I’m fluent in English, Hindi, and Telugu, and have intermediate proficiency in Swedish. I enjoy working on innovative solutions that bridge technology and societal needs.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="skills">
-        <h2 data-aos="zoom-in">Skills</h2>
-        <ul>
-            <li>Programming: Java, Python, C++, SQL</li>
-            <li>Web Development: HTML, CSS, JavaScript, React.js</li>
-            <li>AI and Machine Learning: TensorFlow, PyTorch, NLP</li>
-        </ul>
-    </section>
+  <!-- Experience Section -->
+  <section id="experience" class="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 font-heading" data-aos="fade-right">Experience</h2>
+      <div class="space-y-8">
+        <!-- Maritime Hackathon Win -->
+        <div class="border-l-4 border-blue-500 pl-4" data-aos="fade-up">
+          <h3 class="text-xl font-semibold">Maritime Systems Hackathon - 1st Place (Oct. 2024)</h3>
+          <p class="text-sm mt-2">Achieved first place at the Maritime Systems Hackathon by developing AI-driven solutions to enhance fuel efficiency and support Vision-45 emissions goals.</p>
+        </div>
 
-    <section id="contact">
-        <h2 data-aos="fade-right">Contact Me</h2>
-        <p>Email: <a href="mailto:saisharan221@gmail.com">saisharan221@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/saisharanraja" target="_blank">linkedin.com/in/saisharanraja</a></p>
-    </section>
+        <!-- Visard -->
+        <div class="border-l-4 border-blue-500 pl-4" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-semibold">Developer Intern, Visard (Jul. 2022 – Feb. 2023)</h3>
+          <ul class="list-disc ml-6 mt-2 text-sm space-y-1">
+            <li>Built a website enabling start-ups in underdeveloped regions of India to showcase their work and connect with resources.</li>
+            <li>Contributed to scalable software solutions tailored to emerging businesses, enhancing efficiency and outreach.</li>
+            <li>Collaborated with a team to deliver impactful technical solutions addressing real-world challenges.</li>
+          </ul>
+        </div>
 
-    <footer>
-        <p>&copy; 2024 Saisharan Raja. All rights reserved.</p>
-    </footer>
+        <!-- Fashonme -->
+        <div class="border-l-4 border-blue-500 pl-4" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="text-xl font-semibold">Machine Learning Developer / Co-Founder, Fashonme (Dec. 2022 – Jul. 2023)</h3>
+          <ul class="list-disc ml-6 mt-2 text-sm space-y-1">
+            <li>Developed ML algorithms to predict clothing combinations, reducing outfit creation time by 40%.</li>
+            <li>Implemented a platform for users to upload images and create outfits from their wardrobe, saving 35% more time.</li>
+            <li>Applied NLP to improve style searches, enhancing speed and accuracy of recommendations.</li>
+            <li>Empowered customers to experiment with new trends and find perfect looks in seconds.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold mb-8 font-heading" data-aos="fade-right">Projects</h2>
+    <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
+      <!-- Maritime AI Project -->
+      <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4 hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">LLMs/AI for Maritime Systems</h3>
+        <p class="text-sm mb-4">Investigating Large Language Models for energy and fuel analysis in maritime operations. Contributing to research that helps achieve Vision-45 emissions targets.</p>
+        <a href="https://github.com/YourGitHub" class="text-blue-600 hover:underline">GitHub</a>
+      </div>
+      <!-- Fashion Recommendation Tool -->
+      <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4 hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Fashion Recommendation Tool</h3>
+        <p class="text-sm mb-4">A platform using ML & NLP to provide daily outfit inspiration and speed up fashion decision-making.</p>
+        <a href="https://github.com/YourGitHub" class="text-blue-600 hover:underline">GitHub</a>
+      </div>
+      <!-- Non-Profit Showcase Platform -->
+      <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4 hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold mb-2">Non-Profit Showcase Platform</h3>
+        <p class="text-sm mb-4">A website empowering start-ups in underdeveloped regions to connect with resources and showcase their work globally.</p>
+        <a href="https://github.com/YourGitHub" class="text-blue-600 hover:underline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 font-heading" data-aos="fade-right">Skills & Certifications</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8" data-aos="fade-up">
+        <!-- Example skills -->
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-12 h-12" />
+          <p class="text-sm">Java</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12" />
+          <p class="text-sm">Python</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-12 h-12" />
+          <p class="text-sm">C++</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" alt="MATLAB" class="w-12 h-12" />
+          <p class="text-sm">MATLAB</p>
+        </div>
+        <!-- More Skills -->
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" class="w-12 h-12" />
+          <p class="text-sm">TensorFlow</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" class="w-12 h-12" />
+          <p class="text-sm">PyTorch</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" class="w-12 h-12" />
+          <p class="text-sm">NumPy</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" class="w-12 h-12" />
+          <p class="text-sm">Pandas</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikit-learn/scikit-learn-original.svg" alt="Scikit-learn" class="w-12 h-12" />
+          <p class="text-sm">Scikit-learn</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-12 h-12" />
+          <p class="text-sm">Git</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-12 h-12" />
+          <p class="text-sm">Linux</p>
+        </div>
+        <div class="flex flex-col items-center space-y-2">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" class="w-12 h-12" />
+          <p class="text-sm">Jupyter</p>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <h3 class="text-2xl font-semibold mb-4 font-heading" data-aos="fade-left">Certifications</h3>
+      <ul class="list-disc ml-6 text-sm space-y-1" data-aos="fade-up">
+        <li>Google Cybersecurity Professional Certificate – Google</li>
+        <li>CS50: Introduction to Computer Science – Harvard University</li>
+        <li>CompTIA Security+ – CompTIA</li>
+        <li>Certified Ethical Hacking Essentials (CEHE) – EC-Council</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl font-bold mb-8 font-heading" data-aos="fade-right">Get in Touch</h2>
+    <form action="#" method="POST" class="max-w-md space-y-4" data-aos="fade-up">
+      <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded" required />
+      <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded" required />
+      <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded" required></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Send Message</button>
+    </form>
+    <div class="mt-8" data-aos="fade-up" data-aos-delay="200">
+      <p class="mb-2">Or connect with me on:</p>
+      <div class="flex space-x-4 items-center">
+        <a href="mailto:saisharan221@gmail.com" class="text-blue-600 hover:underline">Email</a>
+        <a href="https://linkedin.com/in/YourProfile" class="text-blue-600 hover:underline">LinkedIn</a>
+        <a href="https://github.com/YourGitHub" class="text-blue-600 hover:underline">GitHub</a>
+      </div>
+      <p class="mt-4 text-sm">Phone: +46 793402203</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-gray-900 text-center py-4">
+    <p class="text-sm">&copy; 2024 Saisharan Raja. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- GSAP JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-YcrE0mloS4nA4VtAwEukPwGvyw4WvVlqOTSGcuZUJFRbhWc9FRKoN/lFg8C0PWuY8zWI8rN2y3axCxtwdHnd0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 </body>
 </html>
